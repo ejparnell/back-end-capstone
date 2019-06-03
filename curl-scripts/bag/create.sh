@@ -10,7 +10,6 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "bag": {
-      "hero": "'"${HERID}"'",
       "itemName": "'"${NAME}"'",
       "itemAbility": "'"${ABI}"'"
     }

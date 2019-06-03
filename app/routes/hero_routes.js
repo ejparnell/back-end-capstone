@@ -9,8 +9,10 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-router.get('/heros', requireToken, (req, res, next) => {
+router.get('/heros', (req, res, next) => {
   Hero.find()
+    .populate('specialty')
+    .populate('bag')
     .then(heros => {
       return heros.map(hero => hero.toObject())
     })
@@ -19,8 +21,10 @@ router.get('/heros', requireToken, (req, res, next) => {
 })
 
 // SHOW
-router.get('/heros/:id', requireToken, (req, res, next) => {
+router.get('/heros/:id', (req, res, next) => {
   Hero.findById(req.params.id)
+    .populate('specialty')
+    .populate('bag')
     .then(handle404)
     .then(hero => res.status(200).json({ hero: hero.toObject() }))
     .catch(next)

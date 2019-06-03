@@ -14,7 +14,8 @@ curl "${API}${URL_PATH}" \
       "health": "'"${HEA}"'",
       "hitDice": "'"${HIT}"'",
       "weapon": "'"${WEP}"'",
-      "armor": "'"${ARM}"'"
+      "armor": "'"${ARM}"'",
+      "name": "'"${NAME}"'"
     }
   }'
 

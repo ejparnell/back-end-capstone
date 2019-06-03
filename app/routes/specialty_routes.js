@@ -9,7 +9,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-router.get('/specialtys', requireToken, (req, res, next) => {
+router.get('/specialtys', (req, res, next) => {
   Specialty.find()
     .then(specialtys => {
       return specialtys.map(specialty => specialty.toObject())
@@ -19,7 +19,7 @@ router.get('/specialtys', requireToken, (req, res, next) => {
 })
 
 // SHOW
-router.get('/specialtys/:id', requireToken, (req, res, next) => {
+router.get('/specialtys/:id', (req, res, next) => {
   Specialty.findById(req.params.id)
     .then(handle404)
     .then(specialty => res.status(200).json({ specialty: specialty.toObject() }))
@@ -27,6 +27,7 @@ router.get('/specialtys/:id', requireToken, (req, res, next) => {
 })
 
 // CREATE
+// have to remove after adding in all classes
 router.post('/specialtys', requireToken, (req, res, next) => {
   req.body.specialty.owner = req.user.id
   Specialty.create(req.body.specialty)
@@ -37,6 +38,7 @@ router.post('/specialtys', requireToken, (req, res, next) => {
 })
 
 // UPDATE
+// have to remove after adding in all classes
 router.patch('/specialtys/:id', requireToken, removeBlanks, (req, res, next) => {
   delete req.body.specialty.owner
 
@@ -51,6 +53,7 @@ router.patch('/specialtys/:id', requireToken, removeBlanks, (req, res, next) => 
 })
 
 // DESTROY
+// have to remove after adding in all classes
 router.delete('/specialtys/:id', requireToken, (req, res, next) => {
   Specialty.findById(req.params.id)
     .then(handle404)

@@ -1,9 +1,8 @@
 const mongoose = require('mongoose')
 
 const specialtySchema = new mongoose.Schema({
-  hero: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Hero',
+  name: {
+    type: String,
     required: true
   },
   health: {

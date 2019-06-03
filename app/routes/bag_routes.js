@@ -9,7 +9,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-router.get('/bags', requireToken, (req, res, next) => {
+router.get('/bags', (req, res, next) => {
   Bag.find()
     .then(bags => {
       return bags.map(bag => bag.toObject())
@@ -19,7 +19,7 @@ router.get('/bags', requireToken, (req, res, next) => {
 })
 
 // SHOW
-router.get('/bags/:id', requireToken, (req, res, next) => {
+router.get('/bags/:id', (req, res, next) => {
   Bag.findById(req.params.id)
     .then(handle404)
     .then(bag => res.status(200).json({ bag: bag.toObject() }))
