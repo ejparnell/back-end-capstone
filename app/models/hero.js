@@ -8,8 +8,7 @@ const heroSchema = new mongoose.Schema({
   },
   bag: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Bag',
-    required: true
+    ref: 'Bag'
   },
   specialty: {
     type: mongoose.Schema.Types.ObjectId,

@@ -9,7 +9,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-router.get('/heros', (req, res, next) => {
+router.get('/heros', requireToken, (req, res, next) => {
   Hero.find()
     .populate('specialty')
     .populate('bag')
@@ -41,13 +41,13 @@ router.post('/heros', requireToken, (req, res, next) => {
 })
 
 // UPDATE
-router.patch('/heros/:id', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/heros/:id', removeBlanks, (req, res, next) => {
   delete req.body.hero.owner
 
   Hero.findById(req.params.id)
     .then(handle404)
     .then(hero => {
-      requireOwnership(req, hero)
+      // requireOwnership(req, hero)
       return hero.update(req.body.hero)
     })
     .then(() => res.sendStatus(204))
@@ -55,11 +55,11 @@ router.patch('/heros/:id', requireToken, removeBlanks, (req, res, next) => {
 })
 
 // DESTROY
-router.delete('/heros/:id', requireToken, (req, res, next) => {
+router.delete('/heros/:id', (req, res, next) => {
   Hero.findById(req.params.id)
     .then(handle404)
     .then(hero => {
-      requireOwnership(req, hero)
+      // requireOwnership(req, hero)
       hero.remove()
     })
     .then(() => res.sendStatus(204))
