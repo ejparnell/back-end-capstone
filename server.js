@@ -8,10 +8,9 @@ const cors = require('cors')
 const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
 const heroRoutes = require('./app/routes/hero_routes')
-const monsterRoutes = require('./app/routes/monster_routes')
-const bagRoutes = require('./app/routes/bag_routes')
+// const monsterRoutes = require('./app/routes/monster_routes')
 const specialtyRoutes = require('./app/routes/specialty_routes')
-
+const kinRoutes = require('./app/routes/kin_routes')
 // require error handling middleware
 const errorHandler = require('./lib/error_handler')
 
@@ -66,9 +65,8 @@ app.use(exampleRoutes)
 app.use(userRoutes)
 app.use(heroRoutes)
 app.use(specialtyRoutes)
-app.use(monsterRoutes)
-app.use(bagRoutes)
-
+// app.use(monsterRoutes)
+app.use(kinRoutes)
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
 // passed any error messages from them

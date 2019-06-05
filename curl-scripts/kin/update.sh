@@ -1,7 +1,7 @@
 #!/bin/bash
 
 API="http://localhost:4741"
-URL_PATH="/bags"
+URL_PATH="/heros"
 
 curl "${API}${URL_PATH}" \
   --include \
@@ -9,10 +9,12 @@ curl "${API}${URL_PATH}" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
-    "bag": {
-      "hero": "'"${HERID}"'",
-      "itemName": "'"${NAME}"'",
-      "itemAbility": "'"${ABI}"'"
+    "hero": {
+      "owner": "'"${OWN}"'",
+      "bag": "'"${BAGID}"'",
+      "specialty": "'"${SPEID}"'",
+      "name": "'"${NAME}"'",
+      "alignment": "'"${ALI}"'"
     }
   }'
 
