@@ -28,8 +28,8 @@ router.get('/specialtys/:id', (req, res, next) => {
 
 // CREATE
 // have to remove after adding in all classes
-router.post('/specialtys', requireToken, (req, res, next) => {
-  req.body.specialty.owner = req.user.id
+router.post('/specialtys', (req, res, next) => {
+  // req.body.specialty.owner = req.user.id
   Specialty.create(req.body.specialty)
     .then(specialty => {
       res.status(201).json({ specialty: specialty.toObject() })

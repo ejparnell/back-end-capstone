@@ -1,6 +1,6 @@
 #!/bin/bash
 
-API="http://localhost:4741"
+API="https://afternoon-stream-50589.herokuapp.com"
 URL_PATH="/specialtys"
 
 curl "${API}${URL_PATH}" \
@@ -10,7 +10,6 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "specialty": {
-      "hero": "'"${HERID}"'",
       "health": "'"${HEA}"'",
       "hitDice": "'"${HIT}"'",
       "weapon": "'"${WEP}"'",
