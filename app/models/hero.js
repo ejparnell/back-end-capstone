@@ -11,6 +11,11 @@ const heroSchema = new mongoose.Schema({
     ref: 'Specialty',
     required: true
   },
+  kin: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Kin',
+    required: true
+  },
   name: {
     type: String,
     required: true
@@ -21,11 +26,6 @@ const heroSchema = new mongoose.Schema({
   },
   age: {
     type: String,
-    required: true
-  },
-  kin: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Kin',
     required: true
   }
 })

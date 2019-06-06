@@ -11,10 +11,11 @@ curl "${API}${URL_PATH}" \
   --data '{
     "hero": {
       "owner": "'"${OWN}"'",
-      "bag": "'"${BAGID}"'",
       "specialty": "'"${SPEID}"'",
       "name": "'"${NAME}"'",
-      "alignment": "'"${ALI}"'"
+      "alignment": "'"${ALI}"'",
+      "age": "'"${AGE}"'",
+      "kin": "'"${KIN}"'"
     }
   }'
 

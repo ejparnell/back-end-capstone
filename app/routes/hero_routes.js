@@ -3,16 +3,16 @@ const passport = require('passport')
 const Hero = require('../models/hero')
 const customErrors = require('../../lib/custom_errors')
 const handle404 = customErrors.handle404
-const requireOwnership = customErrors.requireOwnership
+// const requireOwnership = customErrors.requireOwnership
 const removeBlanks = require('../../lib/remove_blank_fields')
 const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-router.get('/heros', requireToken, (req, res, next) => {
+router.get('/heros', (req, res, next) => {
   Hero.find()
     .populate('specialty')
-    .populate('bag')
+    .populate('kin')
     .then(heros => {
       return heros.map(hero => hero.toObject())
     })
@@ -24,7 +24,7 @@ router.get('/heros', requireToken, (req, res, next) => {
 router.get('/heros/:id', (req, res, next) => {
   Hero.findById(req.params.id)
     .populate('specialty')
-    .populate('bag')
+    .populate('kin')
     .then(handle404)
     .then(hero => res.status(200).json({ hero: hero.toObject() }))
     .catch(next)
