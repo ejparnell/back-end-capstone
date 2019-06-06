@@ -27,39 +27,39 @@ router.get('/kins/:id', (req, res, next) => {
 })
 
 // CREATE
-router.post('/kins', (req, res, next) => {
-  // req.body.kin.owner = req.user.id
-  Kin.create(req.body.kin)
-    .then(kin => {
-      res.status(201).json({ kin: kin.toObject() })
-    })
-    .catch(next)
-})
+// router.post('/kins', (req, res, next) => {
+//   // req.body.kin.owner = req.user.id
+//   Kin.create(req.body.kin)
+//     .then(kin => {
+//       res.status(201).json({ kin: kin.toObject() })
+//     })
+//     .catch(next)
+// })
 
 // UPDATE
-router.patch('/kins/:id', requireToken, removeBlanks, (req, res, next) => {
-  delete req.body.kin.owner
-
-  Kin.findById(req.params.id)
-    .then(handle404)
-    .then(kin => {
-      requireOwnership(req, kin)
-      return kin.update(req.body.kin)
-    })
-    .then(() => res.sendStatus(204))
-    .catch(next)
-})
+// router.patch('/kins/:id', requireToken, removeBlanks, (req, res, next) => {
+//   delete req.body.kin.owner
+//
+//   Kin.findById(req.params.id)
+//     .then(handle404)
+//     .then(kin => {
+//       requireOwnership(req, kin)
+//       return kin.update(req.body.kin)
+//     })
+//     .then(() => res.sendStatus(204))
+//     .catch(next)
+// })
 
 // DESTROY
-router.delete('/kins/:id', requireToken, (req, res, next) => {
-  Kin.findById(req.params.id)
-    .then(handle404)
-    .then(kin => {
-      requireOwnership(req, kin)
-      kin.remove()
-    })
-    .then(() => res.sendStatus(204))
-    .catch(next)
-})
+// router.delete('/kins/:id', requireToken, (req, res, next) => {
+//   Kin.findById(req.params.id)
+//     .then(handle404)
+//     .then(kin => {
+//       requireOwnership(req, kin)
+//       kin.remove()
+//     })
+//     .then(() => res.sendStatus(204))
+//     .catch(next)
+// })
 
 module.exports = router

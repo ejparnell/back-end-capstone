@@ -27,39 +27,39 @@ router.get('/monsters/:id', (req, res, next) => {
 })
 
 // CREATE
-router.post('/monsters', requireToken, (req, res, next) => {
-  req.body.monster.owner = req.user.id
-  Monster.create(req.body.monster)
-    .then(monster => {
-      res.status(201).json({ monster: monster.toObject() })
-    })
-    .catch(next)
-})
-
-// UPDATE
-router.patch('/monsters/:id', requireToken, removeBlanks, (req, res, next) => {
-  delete req.body.monster.owner
-
-  Monster.findById(req.params.id)
-    .then(handle404)
-    .then(monster => {
-      requireOwnership(req, monster)
-      return monster.update(req.body.monster)
-    })
-    .then(() => res.sendStatus(204))
-    .catch(next)
-})
-
-// DESTROY
-router.delete('/monsters/:id', requireToken, (req, res, next) => {
-  Monster.findById(req.params.id)
-    .then(handle404)
-    .then(monster => {
-      requireOwnership(req, monster)
-      monster.remove()
-    })
-    .then(() => res.sendStatus(204))
-    .catch(next)
-})
+// router.post('/monsters', requireToken, (req, res, next) => {
+//   req.body.monster.owner = req.user.id
+//   Monster.create(req.body.monster)
+//     .then(monster => {
+//       res.status(201).json({ monster: monster.toObject() })
+//     })
+//     .catch(next)
+// })
+//
+// // UPDATE
+// router.patch('/monsters/:id', requireToken, removeBlanks, (req, res, next) => {
+//   delete req.body.monster.owner
+//
+//   Monster.findById(req.params.id)
+//     .then(handle404)
+//     .then(monster => {
+//       requireOwnership(req, monster)
+//       return monster.update(req.body.monster)
+//     })
+//     .then(() => res.sendStatus(204))
+//     .catch(next)
+// })
+//
+// // DESTROY
+// router.delete('/monsters/:id', requireToken, (req, res, next) => {
+//   Monster.findById(req.params.id)
+//     .then(handle404)
+//     .then(monster => {
+//       requireOwnership(req, monster)
+//       monster.remove()
+//     })
+//     .then(() => res.sendStatus(204))
+//     .catch(next)
+// })
 
 module.exports = router
