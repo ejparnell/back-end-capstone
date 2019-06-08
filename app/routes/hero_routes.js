@@ -41,7 +41,7 @@ router.post('/heros', requireToken, (req, res, next) => {
 })
 
 // UPDATE
-router.patch('/heros/:id', removeBlanks, (req, res, next) => {
+router.patch('/heros/:id', requireToken, removeBlanks, (req, res, next) => {
   delete req.body.hero.owner
 
   Hero.findById(req.params.id)
@@ -55,7 +55,7 @@ router.patch('/heros/:id', removeBlanks, (req, res, next) => {
 })
 
 // DESTROY
-router.delete('/heros/:id', (req, res, next) => {
+router.delete('/heros/:id', requireToken, (req, res, next) => {
   Hero.findById(req.params.id)
     .then(handle404)
     .then(hero => {

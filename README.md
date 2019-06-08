@@ -35,6 +35,18 @@ so I had some trouble with learning how this technology worked.
  * React.js
  * Express.js
 
+### Wireframs, ERD, and user stories
+ERD: [Imgur](https://i.imgur.com/wXysIeo.jpg)
+Wireframs: [Imgur](https://i.imgur.com/ydGAdaP.jpg)
+User Stories
+* As a user I want to sign in/up/out and change password.
+* As a user I want to create a character
+* As a user I want to pick class
+* As a user I want to battle random monsters
+* As a user I want to recover health with a potion
+* As a user I want to recover health by sleeping
+
+
 ### Screen Shot of Front-end
 ![Image 6-6-19 at 1 25 PM](https://user-images.githubusercontent.com/37162387/59053136-b5358e00-885e-11e9-8a2a-697b554944a5.jpg)
 
